@@ -46,18 +46,18 @@ def _03_unapply(): Unit =
 def _04_unapply(): Unit =
   final case class URL(address: String, port: Int)
 
-  object / {
+  object :: {
     def unapply(url: URL): Option[(String, Int)] = Some((url.address, url.port))
   }
 
   val localHost = URL("localhost", 8080)
 
   localHost match {
-    case /("localhost", port)                     => println(s"I am in localhost and the port is $port")
-    case address / port if address == "localhost" => println("I am not in localhost")
+    case ::("localhost", port)                     => println(s"I am in localhost and the port is $port")
+    case address :: port if address == "localhost" => println("I am not in localhost")
   }
 
   localHost match {
-    case "localhost" / port                       => println(s"I am in localhost and the port is $port")
-    case address / port if address == "localhost" => println("I am not in localhost")
+    case "localhost" :: port                       => println(s"I am in localhost and the port is $port")
+    case address :: port if address == "localhost" => println("I am not in localhost")
   }

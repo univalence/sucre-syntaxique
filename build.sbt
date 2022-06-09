@@ -32,7 +32,8 @@ lazy val app =
   (project in file("."))
     .settings(
       name := "sucre-syntaxique",
-      scalacOptions ~= fatalWarningsAsProperties
+      scalacOptions ~= fatalWarningsAsProperties,
+      libraryDependencies += "org.typelevel" %% "cats-core" % "2.7.0"
     )
 
 /**

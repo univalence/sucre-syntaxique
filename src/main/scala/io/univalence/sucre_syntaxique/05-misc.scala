@@ -43,15 +43,6 @@ def _03_misc(): Unit =
 
   case class Model(name: String, age: Int)
 
-//  given Serializer[Model] =
-//    new Serializer[Model] {
-//      override def serialize(model: Model): String =
-//        s"""{
-//           |  "name": "${model.name}",
-//           |  "age": ${model.age}
-//           |}""".stripMargin
-//    }
-
   given Serializer[Model] =
     (model: Model) => s"""{
                          |  "name": "${model.name}",
