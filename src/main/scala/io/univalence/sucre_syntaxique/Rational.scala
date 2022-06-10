@@ -16,11 +16,9 @@ case class Rational private (n: Int, d: Int) { self =>
 
   def +(int: Int): Rational = Rational(n + int, d + int)
   def -(int: Int): Rational = Rational(n - int, d - int)
-  def *(int: Int): Rational = copy(n = n * int)
 
   def +:(int: Int): Rational = self + int
   def -:(int: Int): Rational = Rational(int - n, int - d)
-  def *:(int: Int): Rational = self * int
 
   private def compare(other: Rational, f: (Int, Int) => Boolean) = f(n * other.d, d * other.n)
 
