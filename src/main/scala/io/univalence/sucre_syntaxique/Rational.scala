@@ -2,6 +2,8 @@ package io.univalence.sucre_syntaxique
 
 import cats.{Monoid, Semigroup}
 
+import io.univalence.sucre_syntaxique.Rational.I
+
 import scala.annotation.tailrec
 
 case class Rational private (n: Int, d: Int) { self =>
@@ -14,11 +16,13 @@ case class Rational private (n: Int, d: Int) { self =>
   def -(other: Rational): Rational = Rational(n * other.d - other.n * d, d * other.d)
   def *(other: Rational): Rational = Rational(n * other.n, d * other.d)
 
-  def +(int: Int): Rational = Rational(n + int, d + int)
-  def -(int: Int): Rational = Rational(n - int, d - int)
+  def +(int: Int): Rational = (int I 1) + self
+  def -(int: Int): Rational = (int I 1) - self
+  def *(int: Int): Rational = (int I 1) * self
 
-  def +:(int: Int): Rational = self + int
-  def -:(int: Int): Rational = Rational(int - n, int - d)
+  def +:(int: Int): Rational = self + (int I 1)
+  def -:(int: Int): Rational = self - (int I 1)
+  def *:(int: Int): Rational = self * (int I 1)
 
   private def compare(other: Rational, f: (Int, Int) => Boolean) = f(n * other.d, d * other.n)
 
