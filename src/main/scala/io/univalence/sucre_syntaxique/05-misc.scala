@@ -29,11 +29,11 @@ def _01_misc(): Unit =
 
 @main
 def _02_misc(): Unit =
-  case object Test {
-    def +:(string: String): String = "magic"
+  case object capitalize {
+    def +:(string: String): String = string.capitalize
   }
 
-  assert("a" +: Test == "magic")
+  assert("magic" +: capitalize == "MagicMagic")
 
 @main
 def _03_misc(): Unit =
