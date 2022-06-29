@@ -8,12 +8,12 @@ def _01_unapply(): Unit =
 
   cc match {
     case CC(name, true) => println(name)
-    case _              => println("Le unnaply n'a pas fonctionné")
+    case _              => println("Le unapply n'a pas fonctionné")
   }
 
   CC.unapply(cc) match {
     case CC(name, true) => println(name)
-    case _              => println("Le unnaply n'a pas fonctionné")
+    case _              => println("Le unapply n'a pas fonctionné")
   }
 
 @main
@@ -28,7 +28,7 @@ def _02_unapply(): Unit =
 
   cc match {
     case CC(name) => println(name)
-    case _        => println("Le unnaply n'a pas fonctionné")
+    case _        => println("Le unapply n'a pas fonctionné")
   }
 
 @main
